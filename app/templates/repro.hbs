@@ -1,0 +1,20 @@
+<h2>Reproducing the bug</h2>
+<p>An acceptance test the visits this page will timeout on the `await visit()`</p>
+<p>This seems to occur only when the two vertical collections shared a containerSelector. It could be `body` or any
+  other shared container.</p>
+
+<div id="shared-container">
+  {{#vertical-collection (array)
+    estimateHeight=24
+    containerSelector="#shared-container"
+  }}
+  <div>anything</div>
+  {{/vertical-collection}}
+
+  {{#vertical-collection (array)
+    estimateHeight=24
+    containerSelector="#shared-container"
+  }}
+  <div>anything</div>
+  {{/vertical-collection}}
+</div>
